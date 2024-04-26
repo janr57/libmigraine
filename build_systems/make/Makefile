@@ -14,13 +14,13 @@ LBRFLAGS=-fPIC -shared
 INTERPFLAGS=-Wl,-elib_entry
 
 # The shared library and version
-LIBRARY_NAME= libmigraine.so
+LIBRARY_NAME=libmigraine.so
 VERSION_MAJOR=0
 VERSION_MINOR=0.1
 
 LIBRARY= libmigraine.so.$(VERSION_MAJOR).$(VERSION_MINOR)
 
-all: clean $(BUILDIR) $(LIBRARY)
+all: $(BUILDIR) $(LIBRARY)
 
 migraine.o: $(SRC)/migraine.c $(INCLUDE)/migraine.h
 	$(CC) $(CFLAGS) -c -o $@ $< $(INCFLAGS)
