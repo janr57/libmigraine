@@ -1,5 +1,4 @@
-build_systems/script/*-prueba
-build_systems/make/*-prueba
 build_systems/script/buildir
 build_systems/make/buildir
+build_systems/meson/buildir
 
