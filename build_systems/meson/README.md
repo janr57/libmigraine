@@ -1,40 +1,38 @@
-# OBJETIVO DEL DIRECTORIO 'meson'
-  Se utiliza para crear la librería dinámica para gestión de episodios de migraña.
-  utilizando 'Meson'.
-  Aún no realiza tests ni crea el fichero pkg-config 'migraine.pc' que se puede
-  instalar para que otras aplicaciones puedan enlazarse con la librería.
+# DIRECTORY 'meson'
+  It is used to create the 'libmigraine' shared library to manage migraine
+  attack episodes using 'Meson'
+  It only compiles the library but at the time it does not run unit test an it
+  does not install the library.
 
-# ESTRUCTURA DEL DIRECTORIO
-## Contiene dos ficheros
-- README.md:
-  Es el fichero que está leyendo ahora.
-- meson.build:
-  Es el fichero de configuración de 'Meson' para construir la librería, probarla e
-  instalarla.
-## Contiene tres subdirectorios
-- src_meson:
-  Aquí se encuentra el fichero 'meson.build' encargado de compilar el código fuente
-  de la librería.
-- include_meson:
-  Aquí se encuentra el fichero 'meson.build', encargado de localizar los ficheros
-  de cabecera que se instalarán junto a la librería (cuando se añada esta 
-  característica).
+# DIRECTORY STRUCTURE
+## It has three files
+  1. **README.md**:
+  This file.
+  2. **LEEME.md**:
+  The Spanish version of this file.
+  3. **meson.build**:
+  The 'Meson' configuration file to build the library.
+## It has two subdirectories
+  1. src_meson:
+  Here you will find the 'meson.build' configuration file responsible of
+  compiling the library.
+  2. include_meson:
+  Here you will find the 'meson.build' configuration file intended to find the
+  header file which is going to be installed together with the library and
+  the pkg-config file (when these are configured).
 
-# OBTENCIÓN DE LA LIBRERÍA
-  La librería dinámica que se obtiene es 'libmigraine.so.*'. 
-  'Meson' prepara los ficheros necesarios para poder compilarla.
-  Estos se crean en el directorio que se le indica en la línea de comandos.
+# WHAT TO DO
+  The shared library is 'libmigraine.so.*'.
+  'Meson' creates the library, together with some temporary files in
+  the directory that we write in the command line.
+  If we choose the name 'buildir' directory:
 	
-	Para ello hay que seguir los siguientes pasos:
-	$ meson setup buildir
-	$ ninja -C buildir
+  $ meson setup buildir
+  $ ninja -C buildir
 
-    o bien:
-    $ meson setup buildir
-    $ cd buildir
-    $ meson compile
+  or, even better:
 
-# MÁS INFORMACIÓN
-  Para conseguir más información, hay que entrar en uno de los subdirectorios y
-  consultar los ficheros 'README' correspondientes.
+  $ meson setup buildir
+  $ cd buildir
+  $ meson compile
 
