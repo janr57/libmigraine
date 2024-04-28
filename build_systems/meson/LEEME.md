@@ -6,18 +6,18 @@
 
 # ESTRUCTURA DEL DIRECTORIO
 ## Contiene tres ficheros
-  1. LEEME.md:
+  1. **LEEME.md**:
      Es el fichero que está leyendo ahora.
-  2. README.md:
+  2. **README.md**:
      Es la versión inglesa de este fichero.
-  3. meson.build:
+  3. **meson.build**:
      Es el fichero de configuración de 'Meson' para construir la librería, 
      probarla e instalarla.
 ## Contiene dos subdirectorios
-  1. src_meson:
+  1. **src_meson**:
      Aquí se encuentra el fichero 'meson.build' encargado de compilar el 
      código fuente de la librería.
-  2. include_meson:
+  2. **include_meson**:
      Aquí se encuentra el fichero 'meson.build', encargado de localizar el
      fichero de cabecera que se instalará, junto con la librería y el fichero
      pkg-config (cuando se añadan estas opciones). 
@@ -29,12 +29,15 @@
 
   Si elegimos el directorio 'buildir' para construir la librería:
 
+  ```bash
   $ meson setup buildir
   $ ninja -C buildir
+  ```
 
   o, incluso mejor:
 
+  ```bash
   $ meson setup buildir
   $ cd buildir
   $ meson compile
-
+  ```

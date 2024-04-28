@@ -1,7 +1,7 @@
 # DIRECTORY 'meson'
   It is used to create the 'libmigraine' shared library to manage migraine
   attack episodes using 'Meson'
-  It only compiles the library but at the time it does not run unit test an it
+  It only compiles the library. At the time it does not run unit test an it
   does not install the library.
 
 # DIRECTORY STRUCTURE
@@ -13,10 +13,10 @@
   3. **meson.build**:
   The 'Meson' configuration file to build the library.
 ## It has two subdirectories
-  1. src_meson:
+  1. **src_meson**:
   Here you will find the 'meson.build' configuration file responsible of
   compiling the library.
-  2. include_meson:
+  2. **include_meson**:
   Here you will find the 'meson.build' configuration file intended to find the
   header file which is going to be installed together with the library and
   the pkg-config file (when these are configured).
@@ -26,13 +26,17 @@
   'Meson' creates the library, together with some temporary files in
   the directory that we write in the command line.
   If we choose the name 'buildir' directory:
-	
+
+  ```bash
   $ meson setup buildir
   $ ninja -C buildir
+  ```
 
   or, even better:
 
+  ```bash
   $ meson setup buildir
   $ cd buildir
   $ meson compile
+  ```
 
