@@ -1,5 +1,8 @@
+# Ignore possible build directories
 build_systems/script/buildir
 build_systems/make/buildir
 build_systems/meson/buildir
 build_systems/meson/build
+build_systems/cmake/buildir
+build_systems/cmake/build
 
