@@ -51,3 +51,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 # library executable from the command line.
 target_link_options(${PROJECT_NAME} PRIVATE -elib_entry)
 
+# --- PKG-CONFIG file 'migraine.pc' creation from template 'migraine.pc.in' ---
+configure_file(${PROJECT_NAME}.pc.in ${PROJECT_NAME}.pc @ONLY)
+
