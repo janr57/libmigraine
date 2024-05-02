@@ -13,20 +13,15 @@
   3. **meson.build**:
      Es el fichero de configuración de 'Meson' para construir la librería, 
      probarla e instalarla.
-## Contiene dos subdirectorios
-  1. **src_meson**:
-     Aquí se encuentra el fichero 'meson.build' encargado de compilar el 
-     código fuente de la librería.
-  2. **include_meson**:
-     Aquí se encuentra el fichero 'meson.build', encargado de localizar el
-     fichero de cabecera que se instalará, junto con la librería y el fichero
-     pkg-config (cuando se añadan estas opciones). 
+## No contiene subdirectorios de configuración
+   Podría contener un directorio que contendría las librerías compiladas.
 
 # CÓMO PROCEDER
   La librería dinámica que se obtiene es 'libmigraine.so.*'. 
   'Meson' prepara los ficheros necesarios para poder compilarla.
   Estos se crean en el directorio que se le indica en la línea de comandos.
-
+  El fichero pkg-config, 'migraine.pc' se puede encontrar en el directorio
+  'meson-private'.
   Si elegimos el directorio 'buildir' para construir la librería:
 
   ```bash
