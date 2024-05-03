@@ -1,5 +1,7 @@
 CC = gcc
 
+PREFIX=/usr/local
+
 SRC = ../../src
 INCLUDE = ../../include
 BUILDIR = buildir
@@ -18,15 +20,30 @@ OBJS=$(patsubst $(SRC)/%.c, $(BUILDIR)/%.o, $(SRCS))
 HDRS=$(wildcard $(INCLUDE)/*.h)
 
 # The shared library and version
-LIBRARY_NAME=libmigraine.so
+BASE_NAME=migraine
 VERSION_MAJOR=0
 VERSION_MINOR=0.1
 
-LIBRARY_MAJ_MIN=$(LIBRARY_NAME).$(VERSION_MAJOR).$(VERSION_MINOR)
-LIBRARY_MAJ=$(LIBRARY_NAME).$(VERSION_MAJOR)
-LIBRARY=$(LIBRARY_NAME)
+LIBRARY_MAJ_MIN=lib$(BASE_NAME).so.$(VERSION_MAJOR).$(VERSION_MINOR)
+LIBRARY_MAJ=lib$(BASE_NAME).so.$(VERSION_MAJOR)
+LIBRARY=lib$(BASE_NAME).so
 
-all: $(BUILDIR)/$(LIBRARY_MAJ_MIN) $(BUILDIR)/$(LIBRARY_MAJ) $(BUILDIR)/$(LIBRARY)
+# --- PKG-CONFIG -------------------------------------------------------------
+define PKG_CONFIG
+prefix=$(PREFIX)
+exec_prefix=$$(prefix)
+includedir=$$(prefix)/include
+libdir=$$(prefix)/lib
+
+Name: lib$(BASE_NAME)
+Description: Library to manage migraine attack episodes
+Version: $(VERSION_MAJOR).$(VERSION_MINOR)
+Cflags: -I$$(includedir)
+Libs: -L$$(libdir) -l$(BASE_NAME)
+endef
+# ----------------------------------------------------------------------------
+
+all: $(BUILDIR)/$(LIBRARY_MAJ_MIN) $(BUILDIR)/$(LIBRARY_MAJ) $(BUILDIR)/$(LIBRARY) $(BUILDIR)/$(BASE_NAME).pc 
 
 $(BUILDIR)/$(LIBRARY_MAJ_MIN): $(OBJS) $(BUILDIR)
 	$(CC) $(LBRFLAGS) $(OBJS) -o $@ $(LIBENTRYFUNC_FLAGS)
@@ -44,6 +61,9 @@ $(BUILDIR)/%.o: $(SRC)/%.c $(BUILDIR)
 $(BUILDIR):
 	rm -rf $@
 	mkdir -p $@
+
+$(BUILDIR)/$(BASE_NAME).pc: 
+	$(file > $@,$(PKG_CONFIG))
 
 .PHONY: clean
 
