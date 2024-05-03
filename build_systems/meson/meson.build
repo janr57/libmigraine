@@ -41,6 +41,6 @@ pkg_mod.generate(
   version : '0.0.1',
   name : 'libmigraine',
   filebase : 'migraine',
-  description : 'Librería para gestionar episodios de migraña.'
+  description : 'Library to manage migraine attack episodes'
 )
 
