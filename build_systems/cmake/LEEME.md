@@ -1,8 +1,8 @@
 # OBJETIVO DEL DIRECTORIO 'cmake'
   Se utiliza para crear la librería dinámica para gestión de episodios de migraña.
   utilizando 'CMake'.
-  Aún no realiza tests ni crea el fichero pkg-config 'migraine.pc' que se puede
-  instalar para que otras aplicaciones puedan enlazarse con la librería.
+  Por ahora, compila e instala la librería, fichero de cabecera y el fichero pkg-config.
+  Aún no realiza tests.
 
 # ESTRUCTURA DEL DIRECTORIO
 ## Contiene tres ficheros
@@ -15,8 +15,15 @@
      probarla e instalarla (cuando estén configuradas estas opciones).
 ## Contiene uno o ningún subdirectorio
    Un directorio temporal en el que se encontraría la librería compilada y otros
-   ficheros intermedios.
-
+   ficheros intermedios, que se podría borrar sin problemas, pues no pertenece
+   al código fuente. Así, si se ha elegido el nombre 'buildir' al directorio
+   donde se compila la librería, se puede borrar:
+   ```bash
+   $ cd build_systems
+   $ cd cmake
+   $ rm -rf buildir
+   ```
+   
 # CÓMO PROCEDER
   La librería dinámica que se obtiene es 'libmigraine.so.*'. 
   'CMake' prepara los ficheros necesarios para poder compilarla.
@@ -28,6 +35,8 @@
   ```bash
   $ cmake -S . -B buildir -G Ninja
   $ ninja -C buildir
+  $ cd build
+  $ sudo ninja install
   ```
 
   También se podría generar un 'Makefile':
@@ -36,5 +45,6 @@
   $ camke -S . -B buildir
   $ cd buildir
   $ make
+  $ sudo make install
   ```
 
