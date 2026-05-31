@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "migraine.h" 
+#include "migraine.h"
 
 /* Main entry point of the library when run as an executable */
 void lib_entry(void)

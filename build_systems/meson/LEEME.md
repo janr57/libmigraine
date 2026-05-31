@@ -1,5 +1,5 @@
 # OBJETIVO DEL DIRECTORIO 'meson'
-  Se utiliza para crear la librería dinámica para gestión de episodios de migraña.
+  Se utiliza para crear la librería dinámica para gestión de episodios de migraña
   utilizando 'Meson'.
   Aún no realiza tests ni crea el fichero pkg-config 'migraine.pc' que se puede
   instalar para que otras aplicaciones puedan enlazarse con la librería.
